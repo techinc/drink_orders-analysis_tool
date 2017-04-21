@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+my $order_running_income;
+my $order_running_cost;
+my $order_running_profit;
+while (<>) {
+	(my $vendor, my $product, my $lot_size, my $order_amount, my $lot_price, my $sales_price) = split (/\|/, $_);
+	chomp $sales_price;
+	$lot_price=$lot_price*1.06;
+	my $bottle_price=($lot_price/$lot_size);
+	my $bottle_profit=($sales_price-$bottle_price);
+	my $bottle_profit_margin=(($bottle_profit/$bottle_price)*100);
+	my $order_total_size=$lot_size*$order_amount;
+	print "For a crate ($lot_size) of $vendor - $product:\n";
+	print "- We pay $bottle_price per bottle that we sell for $sales_price\n";
+	print "- This means there is a $bottle_profit profit, $bottle_profit_margin%\n";
+	print "- In the last order, we had $order_amount crates of $lot_size bottles\n";
+        my $order_cost=$lot_price*$order_amount;
+	my $order_income=$order_total_size*$sales_price;	
+	my $order_profit=$order_income-$order_cost;
+	print "- This cost us ".$order_cost." euros and sold for ".$order_income." euros\n";
+	print "- The profit on this is ".$order_profit." euros. A margin of ".(($order_profit/$order_cost)*100)."%\n";
+	print "----\n:";
+	$order_running_income+=$order_income;
+	$order_running_cost+=$order_cost;
+	$order_running_profit+=$order_profit;
+}
+print "+------------------+\n";
+print "Total order cost: $order_running_cost\n";
+print "Total order income: $order_running_income\n";
+print "Total order profit: $order_running_profit\n";
+print "Combined order margin: ".(($order_running_profit/$order_running_cost)*100)."%\n";
+

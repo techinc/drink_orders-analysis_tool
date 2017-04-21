@@ -1,0 +1,209 @@
+Return-path: <board-bounces@techinc.nl>
+Envelope-to: contact@sociallife.org
+Received: from techinc.techinc.nl ([2001:888:21bc::1:169] helo=techinc.nl)
+	by mail.sociallife.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.72)
+	(envelope-from <board-bounces@techinc.nl>)
+	id 1ZaXcu-0004Sg-Pp
+	for contact@sociallife.org; Sat, 12 Sep 2015 01:21:05 +0200
+Received: from localhost ([::1] helo=techinc.techinc.nl)
+	by techinc.nl with esmtp (Exim 4.72)
+	(envelope-from <board-bounces@techinc.nl>)
+	id 1ZaXcr-0002LB-SV; Sat, 12 Sep 2015 01:21:03 +0200
+Received: from nala.villavu.com ([188.165.243.101])
+	by techinc.nl with esmtp (Exim 4.72)
+	(envelope-from <merlijn@wizzup.org>) id 1ZaXco-0002L3-I9
+	for board@techinc.nl; Sat, 12 Sep 2015 01:20:59 +0200
+Received: from acta.techinc.nl ([195.169.146.32] helo=[10.209.20.65])
+	by nala.villavu.com with esmtpsa (TLS1.2:DHE_RSA_AES_128_CBC_SHA1:128)
+	(Exim 4.80.1) (envelope-from <merlijn@wizzup.org>)
+	id 1ZaXco-00036S-Bz
+	for board@techinc.nl; Sat, 12 Sep 2015 01:20:58 +0200
+References: <55F35C3D.2070703@wizzup.org>
+To: "board@techinc.nl" <board@techinc.nl>
+From: Merlijn Wajer <merlijn@wizzup.org>
+X-Forwarded-Message-Id: <55F35C3D.2070703@wizzup.org>
+Message-ID: <55F361BF.2030807@wizzup.org>
+Date: Sat, 12 Sep 2015 01:20:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux armv7l; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
+MIME-Version: 1.0
+In-Reply-To: <55F35C3D.2070703@wizzup.org>
+X-Spam_score: -1.9
+X-Spam_score_int: -18
+X-Spam_bar: -
+X-Spam_report: Spam detection software,
+	running on the system "techinc.techinc.nl", has
+	identified this incoming email as possible spam. The original message
+	has been attached to this so you can view it (if it isn't spam) or
+	label similar future email.  If you have any questions, see
+	the administrator of that system for details.
+	Content preview: FYI: Mail I sent to Maarten about donation money and
+	drink
+	expenses. He wants to see if we can make the drinks cheaper,
+	so I sent him
+	these stats. -------- Forwarded Message -------- Subject: Re:
+	bestelling dorstlust en meer Date: Sat,
+	12 Sep 2015 00:57:01 +0200 From: Merlijn Wajer
+	<merlijn@wizzup.org> To: maarten@ultratux.org [...] 
+	Content analysis details:   (-1.9 points, 5.0 required)
+	pts rule name              description
+	---- ----------------------
+	--------------------------------------------------
+	-1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
+	[score: 0.0000]
+Subject: [Board] Fwd: Re: bestelling dorstlust en meer
+X-BeenThere: board@techinc.nl
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: <board.techinc.nl>
+List-Unsubscribe: <http://technologia-incognita.nl/cgi-bin/mailman/options/board>,
+	<mailto:board-request@techinc.nl?subject=unsubscribe>
+List-Archive: <http://technologia-incognita.nl/cgi-bin/mailman/private/board>
+List-Post: <mailto:board@techinc.nl>
+List-Help: <mailto:board-request@techinc.nl?subject=help>
+List-Subscribe: <http://technologia-incognita.nl/cgi-bin/mailman/listinfo/board>,
+	<mailto:board-request@techinc.nl?subject=subscribe>
+Content-Type: multipart/mixed; boundary="===============0373464178818155621=="
+Sender: board-bounces@techinc.nl
+Errors-To: board-bounces@techinc.nl
+X-Spam_score: -1.9
+X-Spam_score_int: -18
+X-Spam_bar: -
+X-Spam_report: Spam detection software, running on the system "techinc.techinc.nl", has
+ identified this incoming email as possible spam.  The original message
+ has been attached to this so you can view it (if it isn't spam) or label
+ similar future email.  If you have any questions, see
+ the administrator of that system for details.
+ 
+ Content preview:  FYI: Mail I sent to Maarten about donation money and drink
+    expenses. He wants to see if we can make the drinks cheaper, so I sent him
+    these stats. -------- Forwarded Message -------- Subject: Re: bestelling
+   dorstlust en meer Date: Sat, 12 Sep 2015 00:57:01 +0200 From: Merlijn Wajer
+    <merlijn@wizzup.org> To: maarten@ultratux.org [...] 
+ 
+ Content analysis details:   (-1.9 points, 5.0 required)
+ 
+  pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
+                             [score: 0.0000]
+X-Spam-Score: 2.4 (++)
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0373464178818155621==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature";
+ boundary="j17bxhJ6VvNArifFMkux1nSK5Fos4r4EK"
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--j17bxhJ6VvNArifFMkux1nSK5Fos4r4EK
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+FYI: Mail I sent to Maarten about donation money and drink expenses. He
+wants to see if we can make the drinks cheaper, so I sent him these stats=
+=2E
+
+-------- Forwarded Message --------
+Subject: Re: bestelling dorstlust en meer
+Date: Sat, 12 Sep 2015 00:57:01 +0200
+From: Merlijn Wajer <merlijn@wizzup.org>
+To: maarten@ultratux.org
+
+Facturen attached.
+
+Informatie hieronder. Ik wacht op je analyze. ;-)
+
+On 11/09/15 15:37, maarten@ultratux.org wrote:
+> Nee sorry zit op strand vandaag. Met de attachments bedoelde ik de fact=
+uren, niet stats of rapporten. Voor de rest heb ik weinig toe te voegen o=
+p dit moment. :-)
+
+
+Donaties (2014 Decemtber - 2015-):
+2014-12-09, 100
+2014-12-14, 100
+2014-12-20, 90
+2015-01-05, 90
+2015-01-24, 150
+2015-02-04, 150
+2015-02-07, 100
+2015-02-25, 160
+2015-02-27, 100
+2015-03-04, 100
+2015-03-10, 100
+2015-03-25, 100
+2015-03-28, 150
+2015-04-01, 150
+2015-04-08, 100
+2015-04-11, 150
+2015-04-16, 100
+2015-04-22, 80
+2015-04-29, 70
+2015-05-03, 130
+2015-05-31, 100
+2015-06-09, 100
+2015-08-25: 50
+2015-05-28, 400
+2015-06-17, 120
+2015-07-01, 150
+2015-07-15, 100
+2015-08-08, 100
+2015-08-19, 70
+
+
+Dorstlust 2015-:
+13-1-2015: 386,66
+28-1-2015: 445
+4-3-2015: 342
+25-3-2015: 549,53
+1-5-2015: 636,01
+17-6-2015: 721,92
+19-8-2015: 403,09
+
+
+
+
+
+
+
+--j17bxhJ6VvNArifFMkux1nSK5Fos4r4EK
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBAgAGBQJV82HFAAoJEFgU4HQpHjKDU5IQAKWGX3FwuWHwNOXNy4gg7O4u
+OvT5wtk1nn9V/392usg3xW8pOLMVBIHvLtBtzYGkhUFiBBZR4WPNUtf/ff4zpS7e
++aZEe7BuP2OH7wpU0Mxbak3qJq6GeZzRoBhsQgCoDLiGvWvu7seN0NG60KbFg1xn
+6urLzWcAwtHNjZQinne0em/efAvpBEE4z+Wc869CF1nZ60P2/m+POsiUIDtkheUi
+2mNOxLqlDkfHLrSN7juZjSVQX65W0MLDjj4DKqJrF16R318gCeER0qf6pTEhEnck
+HLWWV8emzeaUjQJ/n9jWeVw6Wp/XhmlM770kln0SVziUCqZ1UNbVf+l5dNqtmU2o
+R1PSYqkw5aYl1YV6kOhycHRGMtlwh1RkfRp4uj6Vr3mTJ+YUUIqN6R5wPb4uCdcW
+SnAFswIzBzhn0qn+aX6NrDaeNT9C4AgXXy0/timLEVkskWI54387wMUc6ZcIA6ws
+t0/SCQaTP9JpOmGKOLujbcuQdSHNbMsYdwOk8uFBS8O+VXaez10FfAjJQkecIi7g
+6KWdw0Y6BM0Vsh2egG0GxDed5K38zGU/wMgVgk6vU2zmpG6Zx9cRG3mrJ+siUmxi
+6JY8qfEhSF6HlNq7sJwC9RK+cdStO42I9+Mv+aMhkDkhHgzowpGfdtCNTESjyvXW
+siRPaAe45F8nCasrjXO8
+=9YxQ
+-----END PGP SIGNATURE-----
+
+--j17bxhJ6VvNArifFMkux1nSK5Fos4r4EK--
+
+
+--===============0373464178818155621==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Board mailing list
+Board@techinc.nl
+http://technologia-incognita.nl/cgi-bin/mailman/listinfo/board
+
+--===============0373464178818155621==--
+

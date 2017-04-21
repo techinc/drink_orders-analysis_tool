@@ -1,0 +1,26 @@
+
+--- Notes from 2017-04-21; Justa
+
+Originally, all prices of all drinks had been set to 2.00, except beer and wine.
+
+For the 4-year aniversary party, it had been decided to lower the prices to 1.50 for everything, except ginger-beer and root-beer.
+A mail on 2015-09-18 announced this.
+
+Note, however, that not just root and ginger-beer have been maintained at 2.00, but a check on the revbank product-list (at 20170421) shows that this is also true for the following other items:
+
+42282266        2.00    ChariTea Mate
+5029396738576   2.00    Rose lemonade
+4106160000136   2.00    Kicos
+9311493000196   2.00    Bundaberg Gingerbeer
+9311493002220   2.00    Bundaberg Gingerbeer 2
+9311493003050   2.00    Bundaberg Gingerbeer III
+9311493000608   2.00    Bundaberg Root beer
+9311493002664   2.00    Bundaberg Pink Grapefruit
+42282204        2.00    LEMONAID Limoen
+42282211        2.00    LEMONAID Maracuja
+42282228        2.00    LEMONAID Bloedsinaasappel
+42227281        2.00    LEMONAID+
+3760045175091   2.00    Elixia Chocolat
+
+At the time of writing the drink-order tool (2017 04) it also seems clear that all the FENTIMANS drinks should be re-priced to 2.00 instead of 1.50, as some of them are resulting in a -2.9% loss per sale of each bottle.
+

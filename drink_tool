@@ -1,0 +1,34 @@
+#/bin/bash
+
+# This is a frontend for the drink_orders infrastructure
+# Designed to get insight of costs and profit
+#
+# Designed 2017 by Justa
+# Licensed under GPLv3
+
+export workdir=`pwd`
+export utildir=$workdir/utils
+export infodir=$workdir/infodir
+
+do_screen () {
+
+       OPTIONS=(1 "Optie 1"
+		2 "Optie 2"
+		3 "Optie 3"
+		)
+
+
+	CHOICE=$(dialog --clear \
+		 --backtitle "$1" \
+		 --menu "$2" \
+		 $3 $4 $5 \
+		 $6- \
+		 2>&1 > /dev/tty)
+
+clear
+echo  "Choice: $CHOICE"
+}
+
+
+do_screen "Main menu" "Please select" 15 40 4  "1 \"Edit order files\"" 
+

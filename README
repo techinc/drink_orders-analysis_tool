@@ -1,0 +1,204 @@
+This directory contains infrastructure/tooling/data concerning the ordering of drinks for the space.
+
+The primary aim is to be able to :
+
+- Have a place to store invoices
+- Have a way to have invoice-data be parseable
+- Have a way to have an analysis of each order (costs/income/etc)
+- Have a way to use the data to create informational graphs/overviews
+
+
+The structure of this directory is as follows:
+
+- order_info/				All INPUT files are located here
+- order_info/csv/			CSV files describing an order
+- order_info/source_material/		Original source-material of order documentation
+- order_info/order-summary		A file containing order totals of each order (ex VAT, INC vat)
+- order_info/pricing-history-notes	Lists changes in prices for drinks
+- utils/				Contains tools that do all the work
+- analysis_info/			Contains CSV files built by analysis tool
+- gnuplot_scripts/			Graphing tools <NOT WORKING YET>
+- archive/				Store random old stuff here.
+
+=================================
+Syntax/structure of files:
+=================================
+
+======
+order_info/csv/order_*
+======
+
+Filenames in order_info/csv is as follows:
+
+'order_$deliverydate-$invoicenumber'
+
+For example: order_20170327-17700810
+This is an order delivered on 2017-03-27 with invoice 17700810 associated to it.
+
+The order_info/csv/ files have the following syntax:
+
+supplier|nme|amount_per_batch|batches|price_per_batch(ex vat)|sale_price
+
+The 'Suppler|Name' combo can be anything, but for existing products, please adhere to the list already used; added in appendix A at the end of this text-file.
+
+amount_per_batch 	= bottles per crate, in most cases. Single bottles or Statiegeld-crates have a amount_per_batch of 1
+batches 		= Amount of crates
+price_per_batch(ex vat)	= The price per crate, ex VAT, as listed on the invoice
+sale_price		= The price 1 unit (bottle) is sold for in the space.
+
+
+======
+order_info/source_material/order_*
+======
+
+This directory contains (at least) a /pdfs dir that contains all the raw PDF's of the invoices, under their original name.
+There are symlinks in this directory pointing into the /pdfs/ dir that use the same filename-structure as described above for the orders_info/csv/ files.
+
+The purpose here is to be able to have a place to store raw invoices and be able to match each csv with it's original pdf afterwards and do an automatic sanity-check during analysis.
+
+======
+order_info/order_summary
+======
+
+This is is a csv file using | as a separator.
+It's purpose is to keep track of all the amounts paid for each order as listed on the invoice.
+The format is as follows:
+
+order_file|ex_vat|inc_vat
+
+An example would be:
+order_20160609-20154286|442.10|468.04
+
+This entry implies that there is a order_info/csv/order_20160609-20154286 file and a /order_info/source_material/order_20160609-20154286 symlink that links to the PDF containing the invoice. The invoice listed that the EX VAT cost was 442.10 euro and the INC VAT cost was 468.04 for this order.
+
+
+======
+analysis_info/order_*
+======
+
+These files are created automatically and are the result of using the analysis tools to parse the order_info/csv files.
+The format of these files is an extension of the CSV format used for the order_info/csv files.
+There is an EXTRA line at the end of each of these CSV files which contains a special-format summary of the entire invoice.
+
+
+The first 6 fields are *copied* from the order_info/order* files. They are not modified in any way.
+
+
+supplier			See above
+name				"" 
+batch_size			""
+batches				""
+price_per_batch(ex vat)		""
+sale_price			""
+price_per_batch(inc vat)	This is price_per_batch(ex vat) multiplied by the VAT factor (default = 1.06)
+total_items			batch_size * batches
+item_cost (inc vat)		price of each bottle
+item_profit			sale_price - item_cost = item_profit
+item_profit_percentage		Same, expressed in percentage
+order_cost (inc vat)		Cost of this product in this order, inc. vat
+order_income (inc vat)		What we would expect to get in as income from this order if every sale is paid for
+order_profit (inc vat)		Difference between total order_income and order_cost for this product
+order_profit_percentage		The above, expressed as a percentage
+vat_factor			The VAT factor used in the calculations of this particular item (default 1.06 for everything except statiegeld)
+
+
+
+An example:
+Club-Mate|Original|20|2|18.00|1.50|19.08|40|0.954|0.546|57.2327044025157|38.16|60|21.84|57.2327044025157|1.06
+
+Which reads, in english:
+2 crates of Original Club-Mate bottles (20 bottles/crate), costing 18.00 per crate; sold for 1.50 a piece
+
+Each crate costs us 19.08 inc VAT.
+The total order is 40 bottles and each bottle costs us 0.954 inc vat
+This works out to 0.546 euro profit per bottle; which is %57.232... percent profit per bottle.
+The total order of this product costs us 38.16 inc VAT.
+Selling each of the 40 bottles for 1.50 should bring in 60 euros.
+The difference between cost/profit is 21.84 euros for this product, which is 57.232...% profit
+The VAT factor used to calculate the analysis is 1.06
+
+
+The format of the last line in each of these files is a total summary of everything contained in the invoice and follows the same syntax as each individual item, but has some specifics and is best explained using an example:
+
+ORDER|TOTAL||38|651.6|1.58379888268156|693.456|716|0.968513966480447|0.615284916201117|63.5287602962553|1134|440.544|1.06
+
+In plain english:
+The ORDER TOTAL of the whole invoice contained 38 batches (crates).
+It cost us 651.6 ex VAT (this should correspond  to the TOTAL figure in the invoice)
+The average sales-price of each item 1.583..
+The total cost INC vat was 693.45 (and should correspond to the TOTAL INC VAT on the invoice) 
+The order contains 716 discrete items (batches * batch-size)
+The average COST per item is 0.9685... 
+The average PROFIT per item is 0.61528...
+The avarage PROFIT PERCENTAGE is then 63.528..%
+If every item gets sold for it's sales_price, this order should result in 1134 of income
+The total pfofit on this order is then 440.544
+The VAT factor supplied when running this tool was 1.06
+
+
+=================================
+Processing a new invoice
+=================================
+
+1) Copy the invoice PDF to order_info/source_material/pdfs
+2) Make a symlink in order_info/source_material/ to the PDF of the invoice
+  *use filename format as described above!*
+3) Add an entry in order_info/order_summary for the new order; add the ex VAT and inc VAT totals as listed in the invoice
+4) Create a new file in order_info/csv with the same file-name as used for the symlink.
+   - For each entry in the invoice, create a line with the syntax as described above
+   - Special care should be taken with 'Statiegeld' items:
+   - A Statiegeld item always has a batch-size of 1
+   -- When we PAY a deposit on a crate, it has a POSITIVE cost/item
+   -- When we get deposit RETURNED, it has a NEGATIVE cost/item.
+   -- Do not use negative batch-sizes.
+   -- Use Statiegeld|<description> combinations as listed in Appendix A whenever possible
+   - NOTE: Statiegeld items are special in that they:
+   -- Do not have VAT applied to them
+   -- Do not count towards total ITEMS purchased.
+
+5) When finished, run ./parse_all.sh
+6) The analysis_info/ dir will now have been updated.
+
+
+
+
+=================================
+Appendix A: Commonly used supplier|name combos:
+=================================
+Bundaberg|Ginger
+Bundaberg|Pink Grapefruit
+Bundaberg|Root
+Charitea|Mate
+Club-Mate|Granat
+Club-Mate|Kraftstof
+Club-Mate|original
+Club-Mate|Original
+Club-Mate|Winter
+Cucumis|Komkommer-Basilicum
+Elixia|Chocolat
+Fentimans|Cherrytree Cola
+Fentimans|Herbal Tonic
+Flora Power|Mate
+Fritz|Apfelschorle
+Fritz|Cola
+Fritz|Druif
+Fritz|Koffie
+Fritz|Kola
+Fritz|Meloen
+Heldenpause|Peer-Melisse
+Lemonaid|Bloedsinaasappel
+Lemonaid|Limoen
+Lemonaid|Passievrucht
+Proviant|Citroen
+Proviant|Rabarber
+Sauer|Rhabarberschorle
+Statiegeld|krat20
+Statiegeld|krat24
+Statiegeld|krat_24
+Statiegeld|krat_speciaal
+Statiegeld|retour_fles
+Statiegeld|retour_krat20
+Statiegeld|retour_krat20_leeg
+Statiegeld|retour_krat24
+Statiegeld|retour_krat24_leeg
+
