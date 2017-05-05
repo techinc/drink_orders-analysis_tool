@@ -96,7 +96,9 @@ while (<INPUTFILE>) {
 	$order_running_income+=$order_income;
 	$order_running_cost+=$order_cost;
 	$order_running_cost_ex+=($lot_price_ex*$order_amount);
-	$order_running_profit+=$order_profit;
+	if (uc($vendor) ne 'STATIEGELD') {
+		$order_running_profit+=$order_profit;
+	}
 }
 print "+------------------+\n";
 print "Total crates ordered: $order_running_crates\n";
