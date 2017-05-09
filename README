@@ -78,7 +78,7 @@ analysis_info/order_*
 
 These files are created automatically and are the result of using the analysis tools to parse the order_info/csv files.
 The format of these files is an extension of the CSV format used for the order_info/csv files.
-There is an EXTRA line at the end of each of these CSV files which contains a special-format summary of the entire invoice.
+There is an EXTRA TWO lines at the end of each of these CSV files which contains a special-format summary of the entire invoice.
 
 
 The first 6 fields are *copied* from the order_info/order* files. They are not modified in any way.
@@ -122,17 +122,21 @@ The format of the last line in each of these files is a total summary of everyth
 
 ORDER|TOTAL||38|651.6|1.58379888268156|693.456|716|0.968513966480447|0.615284916201117|63.5287602962553|1134|440.544|1.06
 
+ORDER|TOTAL||38|651.6|1.58379888268156|693.456|716|0.968513966480447|0.615284916201117|63.5287602962553|1134|440.544|1.06
+ORDER|DRINKS_ONLY||38|697.6|1.58379888268156|739.456|716|1.03275977653631|0.551039106145251|53.3559806127748|1134|394.544|1.06
+
+
 In plain english:
 The ORDER TOTAL of the whole invoice contained 38 batches (crates).
-It cost us 651.6 ex VAT (this should correspond  to the TOTAL figure in the invoice)
+It cost us 651.6 ex VAT (or 697.6 if you do not count the income from returned crates; the first figure should correspond  to the TOTAL figure in the invoice)
 The average sales-price of each item 1.583..
-The total cost INC vat was 693.45 (and should correspond to the TOTAL INC VAT on the invoice) 
+The total cost INC vat was 693.45 (or 739.456 if you leave out crate-deposits. The first figure should correspond to the TOTAL INC VAT on the invoice) 
 The order contains 716 discrete items (batches * batch-size)
-The average COST per item is 0.9685... 
-The average PROFIT per item is 0.61528...
-The avarage PROFIT PERCENTAGE is then 63.528..%
+The average COST per item is 0.9685... (1.032... if you do not consider crate-deposits)
+The average PROFIT per item is 0.61528... (0.5510... if you do not consider crate-deposits)
+The avarage PROFIT PERCENTAGE is then 63.528..% (53.355..% if you do not consider crate-deposits)
 If every item gets sold for it's sales_price, this order should result in 1134 of income
-The total pfofit on this order is then 440.544
+The total profit on this order is then 440.544 (394.544 if you do not consider crate-deposits)
 The VAT factor supplied when running this tool was 1.06
 
 

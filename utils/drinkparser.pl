@@ -54,6 +54,12 @@ my $order_running_cost_ex;
 my $order_running_income;
 my $order_running_cost;
 my $order_running_profit;
+my $order_running_cost_drinks;
+my $order_running_cost_ex_drinks;
+my $order_running_profit_drinks;
+my $order_running_income_drinks;
+my $order_bottle_average_sales_price_drinks;
+
 
 open (INPUTFILE, $options{'i'}) || die 'Couldnt open file '.$options{'i'}.": $!";
 
@@ -86,18 +92,28 @@ while (<INPUTFILE>) {
 		print OUTPUTFILE $_."|";
 		if (uc($vendor) ne 'STATIEGELD') {
 			print OUTPUTFILE $lot_price."|".$order_total_size."|".$bottle_price."|".$bottle_profit."|".$bottle_profit_margin."|".$order_cost."|".$order_income."|".$order_profit."|".$order_profit_margin."|".$vat_factor."\n";
-		$order_running_crates+=$order_amount;
-		$order_running_bottles+=$bottle_count;
+#		$order_running_crates+=$order_amount;
+#		$order_running_bottles+=$bottle_count;
 		} else {
 			print OUTPUTFILE $lot_price."|".$order_total_size."|".$bottle_price."|".$bottle_profit."|".$bottle_profit_margin."|".$order_cost."|".$order_income."|".$order_profit."|".$order_profit_margin."|0\n";
 		}
 	}
 
+	if (uc($vendor) ne 'STATIEGELD') {
+		$order_running_crates+=$order_amount;
+		$order_running_bottles+=$bottle_count;
+	}
+
 	$order_running_income+=$order_income;
 	$order_running_cost+=$order_cost;
 	$order_running_cost_ex+=($lot_price_ex*$order_amount);
+	$order_running_profit+=$order_profit;
+
 	if (uc($vendor) ne 'STATIEGELD') {
-		$order_running_profit+=$order_profit;
+		$order_running_income_drinks+=$order_income;
+		$order_running_cost_drinks+=$order_cost;
+		$order_running_cost_ex_drinks+=($lot_price_ex*$order_amount);
+		$order_running_profit_drinks+=$order_profit;
 	}
 }
 print "+------------------+\n";
@@ -111,12 +127,20 @@ print "Combined order margin: ".(($order_running_profit/$order_running_cost)*100
 if ($outputcsv && $summary_line) {
 	my $order_bottle_average_sales_price=($order_running_income/$order_running_bottles);
 	my $order_bottle_average_cost=($order_running_cost/$order_running_bottles);
+	my $order_bottle_average_cost_drinks=($order_running_cost_drinks/$order_running_bottles);
 	my $order_bottle_average_profit=($order_running_profit/$order_running_bottles);
+	my $order_bottle_average_profit_drinks=($order_running_profit_drinks/$order_running_bottles);
 	my $order_bottle_average_profit_margin=($order_bottle_average_profit/$order_bottle_average_cost)*100;
+	my $order_bottle_average_profit_margin_drinks=($order_bottle_average_profit_drinks/$order_bottle_average_cost_drinks)*100;
 	
 	print OUTPUTFILE "ORDER|TOTAL||$order_running_crates|$order_running_cost_ex|$order_bottle_average_sales_price|";
 	print OUTPUTFILE "$order_running_cost|$order_running_bottles|$order_bottle_average_cost|$order_bottle_average_profit|";
 	print OUTPUTFILE "$order_bottle_average_profit_margin|$order_running_income|$order_running_profit|$vat_factor\n";
+
+	print OUTPUTFILE "ORDER|DRINKS_ONLY||$order_running_crates|$order_running_cost_ex_drinks|$order_bottle_average_sales_price|";
+        print OUTPUTFILE "$order_running_cost_drinks|$order_running_bottles|$order_bottle_average_cost_drinks|$order_bottle_average_profit_drinks|";
+	print OUTPUTFILE "$order_bottle_average_profit_margin_drinks|$order_running_income_drinks|$order_running_profit_drinks|$vat_factor\n";
+
 	close OUTPUTFILE;
 }
 close INPUTFILE;

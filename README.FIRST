@@ -18,7 +18,7 @@ Short-cut shell-magic examples:
 
 Produce output that should match up with the amounts in order_info/order-summary
 ------
-echo "EX VAT|INC VAT";grep "ORDER" analysis_info/* | cut -f5.7 -d"|"
+echo "EX VAT|INC VAT";grep "TOTAL" analysis_info/* | cut -f5,7 -d"|"
 ------
 
 
@@ -44,7 +44,7 @@ for i in `cd analysis_info; ls analysis*`; do echo ===== $i =====; echo "Order c
 
 Produce a list of all order-date+manufacter+product combinations and list the SALES-PRICE and PROFIT-PERCENTAGE made on that product at that time; excluding 'statiegeld'
 ------
-echo "Order:Manufacterer|Product|Sales-Price|profit%"; cd analysis_info; for i in `ls analysis*`; do grep -v -H -i 'ORDER' $i | grep -v -i "statiegeld" | cut -f"1,6,2,11" -d"|"; done | sort -n -t"|" -k 3
+echo "Order:Manufacterer|Product|Sales-Price|profit%"; cd analysis_info; for i in `ls analysis*`; do grep -v -H -i 'TOTAL' $i | grep -v -i "statiegeld" | cut -f"1,6,2,11" -d"|"; done | sort -n -t"|" -k 3
 ------
 
 

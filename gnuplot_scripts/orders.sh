@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ "$1" == "" ]
+then
+	echo "please provide year for plots"
+	exit
+fi
+
+export YEAR=$1
 TMPFILE="tmp.$$"
 export ABS_DEF=$(cat <<'STOP'
 define abs(i) {
@@ -11,7 +18,7 @@ STOP
 
 # Euro cost/profit graph
 echo "ORDER|COST|PROFIT" >> $TMPFILE
-for i in `cd ../analysis_info;ls analysis*`
+for i in `cd ../analysis_info;ls analysis-order_$YEAR*`
 do
 	export my_date=`echo $i | sed "s/^analysis-order_\([0-9]\{8\}\)-[0-9]\{8\}/\1/"`
 	echo -n "$my_date|" >> $TMPFILE
@@ -21,10 +28,9 @@ export GNUPLOT_DATA=$TMPFILE
 gnuplot -c order_euro-stacked_histo.gpl
 rm $TMPFILE
 
-
 # PERCENTILE cost/profit graph
 echo "ORDER|COST|PROFIT" >> $TMPFILE
-for i in `cd ../analysis_info;ls analysis*`
+for i in `cd ../analysis_info;ls analysis-order_$YEAR*`
 do
 	my_date=`echo $i | sed "s/^analysis-order_\([0-9]\{8\}\)-[0-9]\{8\}/\1/"`
 	echo -n "$my_date|" >> $TMPFILE
