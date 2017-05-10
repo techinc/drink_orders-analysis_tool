@@ -1,0 +1,20 @@
+year=system("echo $YEAR");
+set terminal pngcairo  enhanced font "arial,10" fontscale 1.0 size 1024, 768 
+set output 'plots/year-cost_income-accum-histo.' . year . '.png' 
+fname = system("echo $GNUPLOT_DATA")
+#plot fname using 2:xtic(1), for [i=3:3] '' using i
+set title "Accumulative Cost and projected Income over the whole year\n " .  year
+set style data lines 
+set xlabel "Date\nTime"
+set timefmt "%Y%m%d"
+set datafile separator '|'
+set yrange [  : ]
+set xdata time
+#set xrange [ "20160101":"20161231" ]
+set ylabel "Euro"
+set format x "%Y/%m/%d"
+set grid
+set key left
+plot fname using 1:6 title 'Order COST', \
+    fname using 1:8 title 'Projected INCOME of order', \
+    fname using 1:10 title 'INCOME received over time since PREVIOUS order'
