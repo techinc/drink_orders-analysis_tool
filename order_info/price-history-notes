@@ -24,3 +24,20 @@ Note, however, that not just root and ginger-beer have been maintained at 2.00, 
 
 At the time of writing the drink-order tool (2017 04) it also seems clear that all the FENTIMANS drinks should be re-priced to 2.00 instead of 1.50, as some of them are resulting in a -2.9% loss per sale of each bottle.
 
+--- Notes from 2017-11-01; Justa
+
+In the PDF's of order_20170830-17704571 AND in order_20170913-17704987 you will see two weird things if you compare PDF's and CSV's of the data
+
+The discrepencies is that the CSV's list that a crate of Club-Mate|Original of 20 bottles costs 16.98, while the PDF states that the Nettoprijs is 18.00
+However, if you look closely at the prices in the PDF, you will note that Dorstlust has been doing the totals wrong. In the 20170913 order:
+
+Omschrijving					Aantal	Netto	Totaal
+Club-Mate| Original Groot	Krat|20x500ml	3	18.00	50.94
+
+As you can see, 3x18 euro can never be 50.94
+Since we did actually just pay 50.94 for 3 crates, the price for a crate in the CSV is listed as 16.95 (50.94/3)
+
+Dorstlust seems to have fixed this again in the 20171011 order.
+---------
+
+
